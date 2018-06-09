@@ -5,7 +5,7 @@ class DBConexao
     const HOST = "localhost";
     const NOMEBANCO = "copao";
     const USUARIO = "root";
-    const SENHA = "";
+    const SENHA = "root";
 
     public static $conexao = null;
 
