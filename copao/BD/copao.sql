@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Jun-2018 às 17:05
+-- Generation Time: 09-Jun-2018 às 17:49
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -32,6 +32,14 @@ CREATE TABLE `curtir` (
   `id_time` int(4) DEFAULT NULL,
   `id_usuario` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `curtir`
+--
+
+INSERT INTO `curtir` (`id_time`, `id_usuario`) VALUES
+(3, 1),
+(1, 1);
 
 -- --------------------------------------------------------
 
