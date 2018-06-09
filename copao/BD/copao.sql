@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Jun-2018 às 00:19
+-- Generation Time: 09-Jun-2018 às 17:05
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -103,7 +103,17 @@ INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_am
 (55, '?', 'Mineiro', 0, 0, 0, 2),
 (56, '?', 'Kauan', 0, 0, 0, 3),
 (57, '?', 'Jeff', 0, 0, 0, 5),
-(58, '?', 'Anderson', 0, 0, 0, 5);
+(58, '?', 'Anderson', 0, 0, 0, 5),
+(59, '1', 'Marlon', 0, 0, 0, 4),
+(60, '2', 'Decker', 0, 0, 0, 4),
+(61, '3', 'Gefe', 0, 0, 0, 4),
+(62, '4', 'Pedro', 0, 0, 0, 4),
+(63, '?', 'Renan', 0, 0, 0, 4),
+(64, '6', 'Goiano', 0, 0, 0, 4),
+(65, '7', 'Mateus Souza', 0, 0, 0, 4),
+(66, '8', 'Luan', 0, 0, 0, 4),
+(67, '9', 'Mateus Quintino', 0, 0, 0, 4),
+(68, '10', 'Matheus Silva', 0, 0, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -115,9 +125,17 @@ CREATE TABLE `partida` (
   `id_partida` int(4) NOT NULL,
   `id_time_mandante` int(4) DEFAULT NULL,
   `id_time_visitante` int(4) DEFAULT NULL,
-  `data` date NOT NULL,
+  `data` varchar(15) NOT NULL,
   `resultado` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `partida`
+--
+
+INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultado`) VALUES
+(1, 1, 3, '01/07/18', '2 x 0'),
+(2, 2, 5, '01/07/18', '1 x 2');
 
 -- --------------------------------------------------------
 
@@ -157,6 +175,14 @@ CREATE TABLE `tipo_usuario` (
   `tipo` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`) VALUES
+(1, 'Comum'),
+(2, 'Admin');
+
 -- --------------------------------------------------------
 
 --
@@ -170,6 +196,13 @@ CREATE TABLE `usuario` (
   `email` varchar(25) NOT NULL,
   `senha` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `id_tipo_usuario`, `email`, `senha`) VALUES
+(1, 'admin', 2, 'copaoifc@gmail.com', 'copao');
 
 --
 -- Indexes for dumped tables
@@ -224,13 +257,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `jogador`
 --
 ALTER TABLE `jogador`
-  MODIFY `id_jogador` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_jogador` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `time`
@@ -242,13 +275,13 @@ ALTER TABLE `time`
 -- AUTO_INCREMENT for table `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipo_usuario` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
