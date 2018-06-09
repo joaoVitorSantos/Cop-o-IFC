@@ -29,17 +29,9 @@ class CRUDusuario
     //END INSERT
 
     //UPDATE
-    public function UpdateUsuario(Usuario $user, $codigo) {
-        $sql = "UPDATE usuario 
-                SET id_usuario ='{$user->getIdUsuario()}', nome_usuario ='{$user->getNomeUsuario()}',
-                    id_tipo_usuario ='{$user->getIdTipoUsuario()}', email ='{$user->getEmail()}'
-                    senha ='{$user->getSenha()}' 
-                    WHERE id_usuario =".$codigo;
-        try{
+    public function UpdateUsuario(Usuario $user) {
+        $sql = "UPDATE `usuario` SET `id_usuario`='{$user->getIdUsuario()}',`nome_usuario`='{$user->getNomeUsuario()}',`id_tipo_usuario`= '{$user->getIdTipoUsuario()}',`email`='{$user->getEmail()}',`senha`='{$user->getSenha()}' WHERE id_usuario = '{$user->getIdUsuario()}'";
             $this->conexao->exec($sql);
-        }catch (PDOException $e){
-            return $e->getMessage();
-        }
     }
     //END UPDATE
 
@@ -86,7 +78,10 @@ class CRUDusuario
 }
 
 //TESTE
-//$user = new Usuario(3, 'testeeee', '1', 'testeeeee', 'testeee@gmail.com');
+//$user = new Usuario(2, 'testeeeex', '1', 'testeeeeek', 'testeee@gmail.com');
 //$crud = new CRUDusuario();
-//$crud->UpdateUsuario($user, 2);
+////$crud->InsertUsuario($user);
+//$crud->UpdateUsuario($user);
+//$usuarios = $crud->getUsuarios();
+//print_r($usuarios);
 //END TESTE
