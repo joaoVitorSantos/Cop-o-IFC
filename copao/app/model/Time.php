@@ -2,19 +2,18 @@
 
 class Time
 {
-
     private $id_time;
+    private $logo;
     private $nome_time;
     private $pontos;
-    private $foto;
     private $cor;
 
-    public function __construct($id_time, $nome_time, $pontos, $foto, $cor)
+    public function __construct($id_time, $logo, $nome_time, $pontos, $cor)
     {
         $this->id_time = $id_time;
+        $this->logo = $logo;
         $this->nome_time = $nome_time;
         $this->pontos = $pontos;
-        $this->foto = $foto;
         $this->cor = $cor;
     }
 
@@ -26,6 +25,16 @@ class Time
     public function setIdTime($id_time)
     {
         $this->id_time = $id_time;
+    }
+
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
     }
 
     public function getNomeTime()
@@ -46,16 +55,6 @@ class Time
     public function setPontos($pontos)
     {
         $this->pontos = $pontos;
-    }
-
-    public function getFoto()
-    {
-        return $this->foto;
-    }
-
-    public function setFoto($foto)
-    {
-        $this->foto = $foto;
     }
 
     public function getCor()
