@@ -25,8 +25,8 @@ if (!isset($_GET['acao'])){
             $user = new Usuario($_POST['id'], $_POST['nome'], $_POST['tipo'], $_POST['senha'], $_POST['email']);
             $cruduser = new CRUDusuario();
             $cruduser->UpdateUsuario($user, $codigo);
-            echo "id:".$_POST['id']."/ nome:".$_POST['nome']."/ tipo:".$_POST['tipo']."/ senha:".$_POST['senha']."/ email:".$_POST['email'];
-//            header('location: controleAcao.php?acao=lista');
+//            echo "id:".$_POST['id']."/ nome:".$_POST['nome']."/ tipo:".$_POST['tipo']."/ senha:".$_POST['senha']."/ email:".$_POST['email'];
+            header('location: controleAcao.php?acao=lista');
         break;
 
         case 'lista':
