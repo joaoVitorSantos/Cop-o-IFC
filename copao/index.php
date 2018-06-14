@@ -12,5 +12,3 @@
 const CONTROLADOR_PRINCIPAL = 'HomeController.php';
 
 header('location: app/controller/' . CONTROLADOR_PRINCIPAL);
-
-?>

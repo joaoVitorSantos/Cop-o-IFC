@@ -5,8 +5,8 @@
  * Date: 09/06/2018
  * Time: 14:37
  */
-require_once "DBConexao.php";
-require_once "Usuario.php";
+require_once "../model/DBConexao.php";
+require_once "../model/Usuario.php";
 
 class CRUDusuario
 {
@@ -69,13 +69,30 @@ class CRUDusuario
         return $objuser;
     }
     //END getUSUARIO
+
+    public function verificaLogin($email, $senha){
+        $sql = "SELECT email, senha FROM usuario WHERE senha = '{$senha}' and email = '{$email}'";
+        $b = $this->conexao->query($sql);
+        $resultado = $b->fetch(PDO::FETCH_ASSOC);
+
+
+        $count = count($resultado);
+
+
+        if($count == 1){
+            return "nao";
+        }
+
+        else {return "sim";}
+
+    }
 }
 
 //TESTE
 //$user = new Usuario(2, 'testeeeex', '1', 'testeeeeek', 'testeee@gmail.com');
 //$crud = new CRUDusuario();
-////$crud->InsertUsuario($user);
-//$crud->UpdateUsuario($user);
-//$usuarios = $crud->getUsuarios();
-//print_r($usuarios);
+//$a = $crud->verificaLogin("copaoifc@gmail.com", "copao");
+////$crud->UpdateUsuario($user);
+////$usuarios = $crud->getUsuarios();
+//echo $a;
 //END TESTE
