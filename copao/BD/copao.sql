@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Jun-2018 às 17:49
+-- Generation Time: 14-Jun-2018 às 02:04
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -65,17 +65,17 @@ INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_am
 (1, '7', 'João Vitor', 0, 0, 0, 1),
 (2, '18', 'Asaph', 0, 0, 0, 1),
 (3, '9', 'Vinicius', 0, 0, 0, 1),
-(4, '8', 'Bryan', 0, 0, 0, 1),
+(4, '8', 'Bryan', 35, 0, 0, 1),
 (5, '19', 'Leonardo Edenir', 0, 0, 0, 1),
-(6, '88', 'Russo', 0, 0, 0, 1),
+(6, '88', 'Russo', 35, 0, 0, 1),
 (7, '99', 'Léo Vieira', 0, 0, 0, 1),
 (8, '21', 'Marlon', 0, 0, 0, 1),
 (9, '60', 'Christian', 0, 0, 0, 1),
-(10, '10', 'André', 0, 0, 0, 1),
+(10, '10', 'André', 7, 0, 0, 1),
 (11, '6', 'Leandro', 0, 0, 0, 3),
 (12, '16', 'Henrique', 0, 0, 0, 3),
 (13, '27', 'Lucas', 0, 0, 0, 3),
-(14, '3', 'Welliton', 0, 0, 0, 3),
+(14, '3', 'Welliton', 3, 0, 0, 3),
 (15, '8', 'Ruan', 0, 0, 0, 3),
 (16, '5', 'Luciano', 0, 0, 0, 3),
 (17, '21', 'Oberdan', 0, 0, 0, 3),
@@ -153,7 +153,7 @@ INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `d
 
 CREATE TABLE `time` (
   `id_time` int(4) NOT NULL,
-  `logo` varchar(25) NOT NULL,
+  `logo` varchar(55) NOT NULL,
   `nome_time` varchar(25) NOT NULL,
   `pontos` int(4) NOT NULL,
   `cor` varchar(30) NOT NULL
@@ -164,13 +164,13 @@ CREATE TABLE `time` (
 --
 
 INSERT INTO `time` (`id_time`, `logo`, `nome_time`, `pontos`, `cor`) VALUES
-(1, '', 'Tigers Outbreak', 0, 'Laranja'),
-(2, '', 'Abiduzidos', 0, 'Azul'),
-(3, '', 'Solares', 0, 'Amarelo'),
-(4, '', 'Vigaristas', 0, 'Roxo'),
-(5, '', 'La Casa de Fuego', 0, 'Vermelho'),
-(6, '', 'Maori', 0, 'Preto'),
-(7, '', 'Servidores', 0, 'Branco');
+(1, '../assets/imagens/logos/laranja.png', 'Tigers Outbreak', 30, 'Laranja'),
+(2, '../assets/imagens/logos/azul.png', 'Abiduzidos', 20, 'Azul'),
+(3, '../assets/imagens/logos/amarelo.png', 'Solares', 23, 'Amarelo'),
+(4, '../assets/imagens/logos/roxo.png', 'Vigaristas', 16, 'Roxo'),
+(5, '../assets/imagens/logos/vermelho.png', 'Socanelas', 12, 'Vermelho'),
+(6, '../assets/imagens/logos/preto.png', 'Maori', 28, 'Preto'),
+(7, '../assets/imagens/logos/servidores.png', 'Servidores', 10, 'Branco');
 
 -- --------------------------------------------------------
 
