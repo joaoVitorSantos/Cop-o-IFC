@@ -71,7 +71,7 @@ class CRUDtime
     }
 
     public function getJogadores($id){
-        $sql = "SELECT * FROM jogador, time WHERE jogador.id_time = time.id_time AND jogador.id_time = '{$id}'";
+        $sql = "SELECT * FROM jogador, time WHERE jogador.id_time = time.id_time AND jogador.id_time = '{$id}' ORDER BY `jogador`.`numero_camisa` ASC";
 
         $res = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
