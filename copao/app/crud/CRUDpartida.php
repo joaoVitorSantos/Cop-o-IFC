@@ -1,6 +1,6 @@
 <?php
 
-require_once "../app/model/DBConexao.php";
+require_once "../model/DBConexao.php";
 
 class CRUDpartida
 {
