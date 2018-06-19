@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 14-Jun-2018 às 02:04
--- Versão do servidor: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: localhost
+-- Tempo de geração: 19/06/2018 às 13:59
+-- Versão do servidor: 5.7.21-0ubuntu0.16.04.1
+-- Versão do PHP: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `copao`
+-- Banco de dados: `copao`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curtir`
+-- Estrutura para tabela `curtir`
 --
 
 CREATE TABLE `curtir` (
@@ -34,7 +32,7 @@ CREATE TABLE `curtir` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `curtir`
+-- Fazendo dump de dados para tabela `curtir`
 --
 
 INSERT INTO `curtir` (`id_time`, `id_usuario`) VALUES
@@ -44,7 +42,7 @@ INSERT INTO `curtir` (`id_time`, `id_usuario`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `jogador`
+-- Estrutura para tabela `jogador`
 --
 
 CREATE TABLE `jogador` (
@@ -58,7 +56,7 @@ CREATE TABLE `jogador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `jogador`
+-- Fazendo dump de dados para tabela `jogador`
 --
 
 INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_amarelo`, `cartao_vermelho`, `id_time`) VALUES
@@ -126,29 +124,31 @@ INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_am
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `partida`
+-- Estrutura para tabela `partida`
 --
 
 CREATE TABLE `partida` (
   `id_partida` int(4) NOT NULL,
   `id_time_mandante` int(4) DEFAULT NULL,
   `id_time_visitante` int(4) DEFAULT NULL,
-  `data` varchar(15) NOT NULL,
-  `resultado` varchar(10) NOT NULL
+  `data` varchar(50) NOT NULL,
+  `resultadoTimeA` int(2) NOT NULL,
+  `resultadoTimeB` int(2) NOT NULL,
+  `vencedor` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `partida`
+-- Fazendo dump de dados para tabela `partida`
 --
 
-INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultado`) VALUES
-(1, 1, 3, '01/07/18', '2 x 0'),
-(2, 2, 5, '01/07/18', '1 x 2');
+INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultadoTimeA`, `resultadoTimeB`, `vencedor`) VALUES
+(1, 1, 6, '1 de julho 2018', 5, 2, NULL),
+(3, 1, 2, '12 de julho de 2018', 2, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `time`
+-- Estrutura para tabela `time`
 --
 
 CREATE TABLE `time` (
@@ -160,7 +160,7 @@ CREATE TABLE `time` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `time`
+-- Fazendo dump de dados para tabela `time`
 --
 
 INSERT INTO `time` (`id_time`, `logo`, `nome_time`, `pontos`, `cor`) VALUES
@@ -175,7 +175,7 @@ INSERT INTO `time` (`id_time`, `logo`, `nome_time`, `pontos`, `cor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tipo_usuario`
+-- Estrutura para tabela `tipo_usuario`
 --
 
 CREATE TABLE `tipo_usuario` (
@@ -184,7 +184,7 @@ CREATE TABLE `tipo_usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tipo_usuario`
+-- Fazendo dump de dados para tabela `tipo_usuario`
 --
 
 INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`) VALUES
@@ -194,7 +194,7 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -206,32 +206,32 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Fazendo dump de dados para tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `id_tipo_usuario`, `email`, `senha`) VALUES
 (1, 'admin', 2, 'copaoifc@gmail.com', 'copao');
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `curtir`
+-- Índices de tabela `curtir`
 --
 ALTER TABLE `curtir`
   ADD KEY `id_time` (`id_time`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indexes for table `jogador`
+-- Índices de tabela `jogador`
 --
 ALTER TABLE `jogador`
   ADD PRIMARY KEY (`id_jogador`),
   ADD KEY `id_time` (`id_time`);
 
 --
--- Indexes for table `partida`
+-- Índices de tabela `partida`
 --
 ALTER TABLE `partida`
   ADD PRIMARY KEY (`id_partida`),
@@ -239,88 +239,82 @@ ALTER TABLE `partida`
   ADD KEY `id_time_visitante` (`id_time_visitante`);
 
 --
--- Indexes for table `time`
+-- Índices de tabela `time`
 --
 ALTER TABLE `time`
   ADD PRIMARY KEY (`id_time`);
 
 --
--- Indexes for table `tipo_usuario`
+-- Índices de tabela `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`id_tipo_usuario`);
 
 --
--- Indexes for table `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD KEY `id_tipo_usuario` (`id_tipo_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `jogador`
+-- AUTO_INCREMENT de tabela `jogador`
 --
 ALTER TABLE `jogador`
   MODIFY `id_jogador` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-
 --
--- AUTO_INCREMENT for table `partida`
+-- AUTO_INCREMENT de tabela `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `time`
+-- AUTO_INCREMENT de tabela `time`
 --
 ALTER TABLE `time`
   MODIFY `id_time` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
--- AUTO_INCREMENT for table `tipo_usuario`
+-- AUTO_INCREMENT de tabela `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
   MODIFY `id_tipo_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Restrições para dumps de tabelas
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `curtir`
+-- Restrições para tabelas `curtir`
 --
 ALTER TABLE `curtir`
   ADD CONSTRAINT `curtir_ibfk_1` FOREIGN KEY (`id_time`) REFERENCES `time` (`id_time`),
   ADD CONSTRAINT `curtir_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Limitadores para a tabela `jogador`
+-- Restrições para tabelas `jogador`
 --
 ALTER TABLE `jogador`
   ADD CONSTRAINT `jogador_ibfk_1` FOREIGN KEY (`id_time`) REFERENCES `time` (`id_time`);
 
 --
--- Limitadores para a tabela `partida`
+-- Restrições para tabelas `partida`
 --
 ALTER TABLE `partida`
   ADD CONSTRAINT `partida_ibfk_1` FOREIGN KEY (`id_time_mandante`) REFERENCES `time` (`id_time`),
   ADD CONSTRAINT `partida_ibfk_2` FOREIGN KEY (`id_time_visitante`) REFERENCES `time` (`id_time`);
 
 --
--- Limitadores para a tabela `usuario`
+-- Restrições para tabelas `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

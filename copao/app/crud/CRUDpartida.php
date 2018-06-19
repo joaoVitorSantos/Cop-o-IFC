@@ -29,11 +29,10 @@ class CRUDpartida
     }
 
     //UPDATE
-    public function updatePartida(Partida $partida){
-        $sql = "UPDATE partida SET id_partida='{$partida->getIdPartida()}', '{$partida->getIdTimeMandante()}', '{$partida->getIdTimeVisitante()}', '{$partida->getData()}', '{$partida->getResultadoTimeA()}', '{$partida->getResultadoTimeB()}', '{$partida->getVencedor()}'
-                WHERE id_partida=".$partida->getIdPartida();
+    public function updatePartida(Partida $partida, $id){
+        $sql = "UPDATE `partida` SET `id_partida`= '{$id}',`id_time_mandante`='{$partida->getIdTimeMandante()}',`id_time_visitante`='{$partida->getIdTimeVisitante()}',`data`='{$partida->getData()}',`resultadoTimeA`='{$partida->getResultadoTimeA()}',`resultadoTimeB`='{$partida->getResultadoTimeB()}',`vencedor`='{$partida->getVencedor()}' WHERE id_partida='{$id}'";
 
-        $this->conexao->exec($sql);
+        try{$this->conexao->exec($sql);}catch (Exception $e){echo $e->getMessage();}
     }
 
     //GET PARTIDA
