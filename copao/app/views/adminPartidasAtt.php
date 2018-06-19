@@ -1,11 +1,6 @@
 <?php
-    include_once "../crud/CRUDpartida.php";
-    include_once "../crud/CRUDtime.php";
 
-
-    $time = new CRUDtime();
-    $times = $time->getTimes();
-    ?>
+?>
 <!DOCTYPE html>
 <html>
 
@@ -37,16 +32,16 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Time 1</label>
                         <select name="timeA" class="custom-control custom-select" draggable="true">
-                            <option selected="">Selecione um Time</option>
+                            <option selected="" value="<?= $time->getIdTime()?>"><?= $time->getNomeTime()?></option>
                             <?php foreach ($times as $t):?>
-                            <option value="<?= $t->getIdTime()?>"><?= $t->getNomeTime()?></option>
+                                <option value="<?= $t->getIdTime()?>"><?= $t->getNomeTime()?></option>
                             <?php endforeach;?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Time 2</label>
                         <select name="timeB" class="custom-control custom-select">
-                            <option selected="">Selecione o outro Time</option>
+                            <option selected="" value="<?= $time->getIdTime()?>"><?= $time->getNomeTime()?></option>
                             <?php foreach ($times as $t):?>
                                 <option value="<?= $t->getIdTime()?>"><?= $t->getNomeTime()?></option>
                             <?php endforeach;?>
@@ -55,10 +50,10 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Data</label>
-                        <input type="text" class="form-control" id="inlineFormInput" name="data" placeholder="Dia de Mes de Ano"> </div>
+                        <input type="text" class="form-control" id="inlineFormInput" value="<?=?>" name="data"> </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Gols Time 1</label>
-                        <input type="text" class="form-control" id="inlineFormInput" placeholder="0" name="gol1"> </div>
+                        <input type="text" value="" class="form-control" id="inlineFormInput" placeholder="0" name="gol1"> </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Gols Time 2</label>
                         <input type="text" class="form-control" id="inlineFormInput" placeholder="0" name="gol2"> </div>

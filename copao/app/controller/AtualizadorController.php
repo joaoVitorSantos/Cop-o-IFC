@@ -1,8 +1,13 @@
 <?php
 
 
-    if ($_GET['rota']){
-        $
+    function partidaAtt(){
+
+    }
+
+
+    if ($_GET['rota'] == "partidaAtt"){
+        partidaAtt();
     }
 
 

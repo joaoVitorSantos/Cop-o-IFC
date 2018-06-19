@@ -6,15 +6,19 @@ class Partida
     private $id_time_mandante;
     private $id_time_visitante;
     private $data;
-    private $resultado;
+    private $resultadoTimeA;
+    private $resultadoTimeB;
+    private $vencedor;
 
-    public function __construct($id_partida, $id_time_mandante, $id_time_visitante, $data, $resultado)
+    public function __construct($id_partida, $id_time_mandante, $id_time_visitante, $data, $resultadoA, $resultadoB, $vencedor)
     {
         $this->id_partida = $id_partida;
         $this->id_time_mandante = $id_time_mandante;
         $this->id_time_visitante = $id_time_visitante;
         $this->data = $data;
-        $this->resultado = $resultado;
+        $this->resultadoTimeA = $resultadoA;
+        $this->resultadoTimeB = $resultadoB;
+        $this->vencedor = $vencedor;
     }
 
     public function getIdPartida()
@@ -57,13 +61,40 @@ class Partida
         $this->data = $data;
     }
 
-    public function getResultado()
+    public function getResultadoTimeA()
     {
-        return $this->resultado;
+        return $this->resultadoTimeA;
     }
 
-    public function setResultado($resultado)
+    public function setResultadoTimeA($resultadoTimeA)
     {
-        $this->resultado = $resultado;
+        $this->resultadoTimeA = $resultadoTimeA;
     }
+
+    public function getResultadoTimeB()
+    {
+        return $this->resultadoTimeB;
+    }
+
+    public function setResultadoTimeB($resultadoTimeB)
+    {
+        $this->resultadoTimeB = $resultadoTimeB;
+    }
+
+    public function getVencedor()
+    {
+        return $this->vencedor;
+    }
+
+    public function setVencedor($vencedor)
+    {
+        $this->vencedor = $vencedor;
+    }
+
+
+
+
+
+
+
 }
