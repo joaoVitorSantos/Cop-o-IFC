@@ -1,8 +1,8 @@
 <?php
 
-require_once "DBConexao.php";
-require_once"Time.php";
-require_once "Jogador.php";
+require_once "../model/DBConexao.php";
+require_once "../model/Time.php";
+require_once "../model/Jogador.php";
 
 class CRUDtime
 {
@@ -24,6 +24,20 @@ class CRUDtime
 
         return $resultado;
     }
+
+    public function getTimesPontos(){
+        $sql = "SELECT * FROM `time` ORDER BY `time`.`pontos` DESC";
+        $res = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        $resultado = array();
+        foreach ($res as $r){
+            $t = new Time($r['id_time'], $r['logo'], $r['nome_time'], $r['pontos'], $r['cor']);
+            $resultado[] = $t;
+        }
+
+        return $resultado;
+    }
+
     
     public function getTime($id){
         $sql = "SELECT * FROM time WHERE id_time = '{$id}'";
@@ -57,7 +71,7 @@ class CRUDtime
     }
 
     public function getJogadores($id){
-        $sql = "SELECT * FROM jogador, time WHERE jogador.id_time = time.id_time AND jogador.id_time = '{$id}'";
+        $sql = "SELECT * FROM jogador, time WHERE jogador.id_time = time.id_time AND jogador.id_time = '{$id}' ORDER BY `jogador`.`numero_camisa` ASC";
 
         $res = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -92,3 +106,6 @@ class CRUDtime
 //$c = new CRUDtime();
 //$res = $c->getJogadores(1);
 //print_r($res);
+//$a = $c->getTimesPontos();
+//print_r($a);
+

@@ -5,8 +5,10 @@
  * Date: 10/06/2018
  * Time: 16:36
  */
-require_once "DBConexao.php";
-require_once "Jogador.php";
+require_once "../model/DBConexao.php";
+require_once "../model/Jogador.php";
+require_once "../model/Time.php";
+require_once "../crud/CRUDtime.php";
 
 class CRUDjogador
 {
@@ -48,6 +50,27 @@ class CRUDjogador
         $sql = "SELECT * FROM jogador";
         $resultado = $this->conexao->query($sql);
         $jogadores = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        $listaJogadores = array();
+        foreach ($jogadores as $jogador) {
+            $id = $jogador['id_jogador'];
+            $camisa = $jogador['numero_camisa'];
+            $nome = $jogador['nome'];
+            $gols = $jogador['gols'];
+            $amarelo = $jogador['cartao_amarelo'];
+            $vermelho = $jogador['cartao_vermelho'];
+            $time = $jogador['id_time'];
+            $obj = new Jogador($id, $camisa, $nome, $gols, $amarelo, $vermelho, $time);
+            $listaJogadores[] = $obj;
+        }
+        return $listaJogadores;
+
+    }
+
+    public function getJogadoresGol(){
+    $sql = "SELECT * FROM `jogador` ORDER BY `jogador`.`gols` DESC LIMIT 5";
+        $resultado = $this->conexao->query($sql);
+        $jogadores = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        $listaJogadores = array();
         foreach ($jogadores as $jogador) {
             $id = $jogador['id_jogador'];
             $camisa = $jogador['numero_camisa'];
@@ -86,3 +109,8 @@ class CRUDjogador
     }
     //END getTIME
 }
+
+//$a = new CRUDjogador();
+//$j = $a->getJogadoresGol();
+//print_r($j);
+

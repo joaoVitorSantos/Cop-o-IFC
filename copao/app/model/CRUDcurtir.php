@@ -5,8 +5,8 @@
  * Date: 12/06/18
  * Time: 13:12
  */
-require_once "DBConexao.php";
-require_once "Curtir.php";
+require_once "../model/DBConexao.php";
+require_once "../model/Curtir.php";
 
 class CRUDcurtir
 {
