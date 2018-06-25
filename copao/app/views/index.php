@@ -8,20 +8,29 @@
   <link rel="stylesheet" href="../assets/css/index.css" type="text/css"> </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="#">Copão IF</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-        <span class="navbar-toggler-icon"></span>
+<?php if (!isset($logado)){
+    echo "<nav class=\"navbar navbar-expand-md bg-primary navbar-dark\">
+    <div class=\"container\">
+      <a class=\"navbar-brand\" href=\"#\">Copão IF</a>
+      <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar2SupportedContent\">
+        <span class=\"navbar-toggler-icon\"></span>
       </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <a class="btn navbar-btn ml-2 text-white btn-secondary">
-          <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Login</a>
-        <a class="btn navbar-btn ml-2 text-white btn-secondary">
-          <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Cadastrar</a>
+      <div class=\"collapse navbar-collapse text-center justify-content-end\" id=\"navbar2SupportedContent\">
+        <a href=\"../controller/UsuarioController.php?rota=loginForm\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Login</a>
+        <a class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Cadastrar</a>
       </div>
     </div>
-  </nav>
+  </nav>";
+}
+
+elseif (isset($logado)){
+    include_once "navLogged.php";
+}
+
+?>
+
   <div class="py-5">
     <div class="container">
       <div class="row">

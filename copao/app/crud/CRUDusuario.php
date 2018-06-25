@@ -71,7 +71,7 @@ class CRUDusuario
     //END getUSUARIO
 
     public function verificaLogin($email, $senha){
-        $sql = "SELECT email, senha FROM usuario WHERE senha = '{$senha}' and email = '{$email}'";
+        $sql = "SELECT * FROM usuario WHERE senha = '{$senha}' and email = '{$email}'";
         $b = $this->conexao->query($sql);
         $resultado = $b->fetch(PDO::FETCH_ASSOC);
 
@@ -83,7 +83,7 @@ class CRUDusuario
             return "nao";
         }
 
-        else {return "sim";}
+        else {return $resultado;}
 
     }
 }
