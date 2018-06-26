@@ -3,8 +3,6 @@
     require_once "../crud/CRUDusuario.php";
     require_once "../model/Usuario.php";
 
-    session_start();
-
     function loginForm(){
         include_once "../views/loginForm.php";
     }
@@ -15,8 +13,8 @@
 
         if ($resultado != 'nao'){
             session_start();
-            $_SESSION['nome'] = $resultado['nome_usuario'];
-            $_SESSION['tipo'] = $resultado['id_tipo_usuario'];
+            $_SESSION['nome'] = $resultado->getNomeUsuario();
+            $_SESSION['tipo'] = $resultado->getIdTipoUsuario();
 
             return $_SESSION;
 
@@ -37,7 +35,7 @@
         if ($resultado == true){
             include_once  "../views/avisoConfirmado.php";
         }
-        else{ include_once "../views/erroCad.php";}
+        elseif ($resultado == false){ include_once "../views/erroCad.php";}
 
 
     }
@@ -60,6 +58,7 @@ if($_GET['rota'] == 'confirmarLogin'){
 }
 
 if(isset($_GET['rota']) and $_GET['rota'] == 'logout'){
+        session_start();
     session_destroy();
     header('location: HomeController.php');
 }
@@ -70,7 +69,7 @@ if (isset($_GET['rota']) and $_GET['rota'] == 'formCadastro'){
 
 if (isset($_GET['rota']) and $_GET['rota'] == 'confirmaCadastro'){
 
-        $senha = base64_encode($_POST['senha']);
-    $u = new Usuario(null,$_POST['nome'], 1,$senha, $_POST['email']);
+        $senha2 = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $u = new Usuario(null,$_POST['nome'], 1,$senha2, $_POST['email']);
     confirmacadastro($u);
 }

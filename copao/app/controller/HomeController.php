@@ -42,7 +42,7 @@ function indexLogado(){
     $user = $_SESSION['nome'];
     $tipo = $_SESSION['tipo'];
 
-    $logado = 'sim';
+    $logado = ['tipo' => $tipo];
 
     include_once "../views/index.php";
 }

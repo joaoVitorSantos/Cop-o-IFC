@@ -18,11 +18,11 @@ class CRUDusuario
 
     //INSERT
     public function InsertUsuario(Usuario $user) {
-        $senha = $this->criptografar($user->getSenha());
-        $sql = "INSERT INTO usuario (nome_usuario, id_tipo_usuario, email, senha) 
-                VALUES ('{$user->getNomeUsuario()}', 1, '{$user->getEmail()}', '{$senha}')";
-            try{$this->conexao->exec($sql);} catch (Exception $e){
-                return $e->getMessage();
+
+        $sql = "INSERT INTO usuario (id_usuario, nome_usuario, id_tipo_usuario, email, senha) 
+                VALUES (null, '{$user->getNomeUsuario()}', 1, '{$user->getEmail()}', '{$user->getSenha()}')";
+            try{$this->conexao->exec($sql);} catch(Exception $e){
+                return false;
             }
 
             return true;
@@ -63,7 +63,7 @@ class CRUDusuario
             $id = $usuario['id_usuario'];
             $nome = $usuario['nome_usuario'];
             $tipo = $usuario['id_tipo_usuario'];
-            $senha = base64_decode($usuario['senha']);
+            $senha = $usuario['senha'];
             $email = $usuario['email'];
             $obj = new Usuario($id, $nome, $tipo, $senha, $email);
             $listaUsuarios[] = $obj;
@@ -77,7 +77,7 @@ class CRUDusuario
         $sql = "SELECT * FROM usuario WHERE id_usuario=".$id;
         $resultado = $this->conexao->query($sql);
         $usuario = $resultado->fetch(PDO::FETCH_ASSOC);
-        $objuser = new Usuario($usuario['id_usuario'], $usuario['nome_usuario'], $usuario['id_tipo_usuario'], base64_decode($usuario['senha']), $usuario['email']);
+        $objuser = new Usuario($usuario['id_usuario'], $usuario['nome_usuario'], $usuario['id_tipo_usuario'], $usuario['senha'], $usuario['email']);
 //        var_dump($objuser);
         return $objuser;
     }
@@ -86,20 +86,19 @@ class CRUDusuario
     public function verificaLogin($email, $senha){
 
 
+        $users = $this->getUsuarios();
 
-        $sql = "SELECT * FROM usuario WHERE senha = '{$senha}' and email = '{$email}'";
-        $b = $this->conexao->query($sql);
-        $resultado = $b->fetch(PDO::FETCH_ASSOC);
-
-
-        $count = count($resultado);
-
-
-        if($count == 1){
-            return "nao";
+        foreach ($users as $u){
+            if (password_verify($senha, $u->getSenha()) and $email == $u->getEmail()){
+                $resultado = $this->getUsuario($u->getIdUsuario());
+                return $resultado;
+            }
         }
 
-        else {return $resultado;}
+
+       return "nao";
+
+
 
     }
 }

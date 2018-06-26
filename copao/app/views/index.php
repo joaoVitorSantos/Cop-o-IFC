@@ -25,8 +25,13 @@
   </nav>";
 }
 
-elseif (isset($logado)){
+elseif (isset($logado) and $logado['tipo'] != 2){
     include_once "navLogged.php";
+}
+
+elseif (isset($logado) and $logado['tipo'] == 2){
+
+    include_once "navAdmin.php";
 }
 
 ?>
@@ -37,8 +42,7 @@ elseif (isset($logado)){
         <?php foreach ($times as $time): ?>
         <div class="col-md-2">
           <img class="d-block mx-auto img-fluid rounded-circle" src="<?= $time->getLogo(); ?>">
-          <a class="btn btn-primary btn-lg
-btn-circle" href="TimeController.php?rota=verTime&id=<?= $time->getIdTime()?>">+ </a>
+          <a class="btn btn-primary btn-lg btn-circle" href="TimeController.php?rota=verTime&id=<?= $time->getIdTime()?>">+ </a>
         </div>
         <?php endforeach; ?>
       </div>
