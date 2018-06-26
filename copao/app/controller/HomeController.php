@@ -57,9 +57,5 @@ if (isset($_SESSION['tipo'])){
     indexLogado();
 }
 
-if(isset($_GET['rota']) and $_GET['rota'] == 'logout'){
-    session_abort();
-    header('location: HomeController.php');
-}
 
 ?>

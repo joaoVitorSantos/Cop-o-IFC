@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
             <a class="btn navbar-btn ml-2 text-white btn-secondary">
                 <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Olá&nbsp;<?= $user ?></a>
-            <a href="HomeController.php?rota=logout" class="btn navbar-btn ml-2 text-white btn-danger">&nbsp;Sair</a>
+            <a href="UsuarioController.php?rota=logout" class="btn navbar-btn ml-2 text-white btn-danger">&nbsp;Sair</a>
         </div>
     </div>
 </nav>

@@ -18,7 +18,7 @@
       <div class=\"collapse navbar-collapse text-center justify-content-end\" id=\"navbar2SupportedContent\">
         <a href=\"../controller/UsuarioController.php?rota=loginForm\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
           <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Login</a>
-        <a class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+        <a href=\"UsuarioController.php?rota=formCadastro\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
           <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Cadastrar</a>
       </div>
     </div>

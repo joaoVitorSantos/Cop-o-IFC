@@ -30,18 +30,18 @@
                 <div class="card text-white p-5 bg-primary">
                     <div class="card-body">
                         <h1 class="mb-4">Cadastre-se</h1>
-                        <form action="https://formspree.io/YOUREMAILHERE">
+                        <form method="post" action="UsuarioController.php?rota=confirmaCadastro">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Enter email"> </div>
+                                <input name="email" type="email" class="form-control" placeholder="Enter email"> </div>
                             <div class="form-group">
                                 <label>Nome Usuario</label>
-                                <input type="text" class="form-control" placeholder="Nome"> </div>
+                                <input name="nome" type="text" class="form-control" placeholder="Nome"> </div>
                             <div class="form-group">
                                 <label>Senha
                                     <br>
                                 </label>
-                                <input type="password" class="form-control" placeholder="Senha"> </div>
+                                <input name="senha" type="password" class="form-control" placeholder="Senha"> </div>
                             <div class="form-group">
                                 <label>Corfirmar Senha</label>
                                 <input type="password" class="form-control" placeholder="Senha"> </div>
