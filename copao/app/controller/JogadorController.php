@@ -5,7 +5,7 @@ require_once "../crud/CRUDjogador.php";
 function lista() {
     $crud = new CRUDjogador();
     $jogadores = $crud->getJogadores();
-    include_once "../views/adminJogador.php";
+    include_once "../views/adminJogadores.php";
 }
 
 function jogC() {

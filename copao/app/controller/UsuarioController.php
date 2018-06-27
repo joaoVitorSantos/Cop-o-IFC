@@ -40,6 +40,10 @@
 
     }
 
+    function viewAdm(){
+        include_once "../views/admin.php";
+    }
+
 
 if($_GET['rota'] == 'loginForm'){
     loginForm();
@@ -72,4 +76,9 @@ if (isset($_GET['rota']) and $_GET['rota'] == 'confirmaCadastro'){
         $senha2 = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     $u = new Usuario(null,$_POST['nome'], 1,$senha2, $_POST['email']);
     confirmacadastro($u);
+}
+
+if (isset($_GET['rota']) and $_GET['rota'] == 'admin'){
+        session_start();
+        viewAdm();
 }
