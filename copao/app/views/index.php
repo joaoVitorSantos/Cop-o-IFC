@@ -52,19 +52,23 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               </thead>
                               <tbody>
                               <tr>
-                                  <td>2</td>
+                                  <td>1</td>
                                   <td><?= $timesP[1]->getNomeTime();?></td>
                                   <td><?= $timesP[1]->getPontos();?></td>
                               </tr>
                               <tr>
-                                  <td>3</td>
+                                  <td>2</td>
                                   <td><?= $timesP[2]->getNomeTime();?></td>
                                   <td><?= $timesP[2]->getPontos();?></td>
                               </tr>
                               <tr>
-                                  <td>4</td>
+                                  <td>3</td>
                                   <td><?= $timesP[3]->getNomeTime();?></td>
                                   <td><?= $timesP[3]->getPontos();?></td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      <a href="TimeController.php?rota=ver" class="btn btn-outline-primary">+</a>&nbsp</td>
                               </tr>
                               </tbody>
                           </table>
@@ -82,15 +86,18 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               </tr>
                               </thead>
                               <tbody>
-                              <?php $a=array('1','2','3'); foreach ($a as $aa):?>
+                              <?php $a=array('0','1','2'); foreach ($a as $aa):?>
                               <tr>
-                                  <td><?= $aa; ?></td>
+                                  <td><?= $aa +1; ?></td>
                                   <td><?= $artilheiros[$aa]->getGols() ?></td>
                                   <td><?= $artilheiros[$aa]->getNome() ?></td>
                                   <td><?= $arrayTimes[$aa]->getNomeTime()?></td>
                               </tr>
                               <?php endforeach;?>
-
+                              <tr>
+                                  <td>
+                                      <a href="JogadorController.php?acao=artilheiros" class="btn btn-outline-primary">+</a>&nbsp</td>
+                              </tr>
                           </table>
                       </div>
                       <div class="col-md-4">
@@ -100,8 +107,9 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               <tr>
                                   <th>#</th>
                                   <th>Time A</th>
-                                  <th>Time B</th>
                                   <th>Resultado</th>
+                                  <th>Time B</th>
+
                               </tr>
                               </thead>
                               <tbody>
@@ -109,13 +117,13 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               <tr>
                                   <td><?= $p->getIdPartida(); ?></td>
                                   <td><?php $t1 = $crudTime->getTime($p->getIdTimeMandante()); echo $t1->getNomeTime();?></td>
+                                  <td><?= $p->getResultadoTimeA()?> x <?= $p->getResultadoTimeB()?></td>
                                   <td><?php $t1 = $crudTime->getTime($p->getIdTimeVisitante()); echo $t1->getNomeTime();?></td>
-                                  <td><?= $p->getResultadoTimeA()?> x <?= $p->getResultadoTimeB() ?></td>
                               </tr>
                               <?php endforeach;?>
-                              <tr>
+                             <tr>
                                   <td>
-                                      <a href="#" class="btn btn-outline-primary">+</a>&nbsp;</td>
+                                      <a href="PartidaController.php?acao=viewPartidas" class="btn btn-outline-primary">+</a>&nbsp</td>
                               </tr>
                               </tbody>
                           </table>
@@ -178,9 +186,6 @@ elseif (isset($logado) and $logado['tipo'] == 2){
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
-    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
-  </pingendo>
 </body>
 
 </html>

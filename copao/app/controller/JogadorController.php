@@ -1,6 +1,7 @@
 <?php
 
 require_once "../crud/CRUDjogador.php";
+require_once "../crud/CRUDtime.php";
 
 function lista() {
     $crud = new CRUDjogador();
@@ -66,4 +67,18 @@ switch ($acao){
         $id = $_GET['id'];
         jogD($id);
     break;
+
+    case 'artilheiros':
+        $crudTime = new CRUDtime();
+        $crudJogadores = new CRUDjogador();
+        $artilheiros = $crudJogadores->getJogadoresGol();
+
+        $count = count($artilheiros);
+        $arrayTimes = array();
+        foreach ($artilheiros as $artilheiro){
+            $time = $crudTime->getTime($artilheiro->getIdTime());
+            $arrayTimes[] = $time;
+        }
+
+        include_once "../views/artilheiros.php";
 }

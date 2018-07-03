@@ -17,6 +17,12 @@ function timeU($id){
     header('location: ../../index.php');
 }
 
+function view(){
+    $c = new CRUDtime();
+    $times = $c->getTimes();
+    include_once "../views/times.php";
+}
+
 if ($_GET["rota"] == "verTime"){
     $crudTime = new CRUDtime();
     $time = $crudTime->getTime($_GET["id"]);
@@ -31,4 +37,8 @@ if ($_GET['rota'] == "timesUpdate"){
 
 if ($_GET['rota'] == "updateTime") {
 timeU($_GET['id']);
+}
+
+if($_GET['rota'] == 'ver'){
+    view();
 }

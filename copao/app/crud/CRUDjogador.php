@@ -67,7 +67,7 @@ class CRUDjogador
     }
 
     public function getJogadoresGol(){
-    $sql = "SELECT * FROM `jogador` ORDER BY `jogador`.`gols` DESC LIMIT 5";
+    $sql = "SELECT * FROM `jogador` ORDER BY `jogador`.`gols` desc";
         $resultado = $this->conexao->query($sql);
         $jogadores = $resultado->fetchAll(PDO::FETCH_ASSOC);
         $listaJogadores = array();

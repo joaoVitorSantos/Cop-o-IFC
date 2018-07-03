@@ -37,5 +37,4 @@ class Curtir
         $this->id_time = $id_time;
     }
 
-
 }

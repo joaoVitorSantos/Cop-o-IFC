@@ -47,7 +47,13 @@ function view($id_partida){
 }
 
 
+function views(){
+    $t = new CRUDtime();
+    $c = new CRUDpartida();
+    $partidas = $c->getPartidas();
 
+    include_once "../views/partidas.php";
+}
 
 
 function form(){
@@ -86,9 +92,8 @@ if ($_GET['acao'] == "att"){
 }
 
 if($_GET['acao'] == 'viewP'){
-
     view($_GET['id']);
-
-
-
+}
+if ($_GET['acao'] == 'viewPartidas'){
+    views();
 }
