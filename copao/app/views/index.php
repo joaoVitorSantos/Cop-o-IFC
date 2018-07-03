@@ -36,120 +36,111 @@ elseif (isset($logado) and $logado['tipo'] == 2){
 
 ?>
 
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <?php foreach ($times as $time): ?>
-        <div class="col-md-2">
-          <img class="d-block mx-auto img-fluid rounded-circle" src="<?= $time->getLogo(); ?>">
-          <a class="btn btn-primary btn-lg btn-circle" href="TimeController.php?rota=verTime&id=<?= $time->getIdTime()?>">+ </a>
-        </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </div>
-  <div class="py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="lead">Classificação</p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Posição</th>
-                <th>Time</th>
-                <th>Pontos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><?= $timesP[0]->getNomeTime();?></td>
-                <td><?= $timesP[0]->getPontos();?></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                  <td><?= $timesP[1]->getNomeTime();?></td>
-                  <td><?= $timesP[1]->getPontos();?></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                  <td><?= $timesP[2]->getNomeTime();?></td>
-                  <td><?= $timesP[2]->getPontos();?></td>
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td><?= $timesP[3]->getNomeTime();?></td>
-                  <td><?= $timesP[3]->getPontos();?></td>
-              </tr>
-              <tr>
-                  <td>5</td>
-                  <td><?= $timesP[4]->getNomeTime();?></td>
-                  <td><?= $timesP[4]->getPontos();?></td>
-              </tr>
-              <tr>
-                  <td>6</td>
-                  <td><?= $timesP[5]->getNomeTime();?></td>
-                  <td><?= $timesP[5]->getPontos();?></td>
-              </tr>
-              <tr>
-                  <td>7</td>
-                  <td><?= $timesP[6]->getNomeTime();?></td>
-                  <td><?= $timesP[6]->getPontos();?></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-6">
-          <p class="lead">Artilheiros
-            <br> </p>
-          <table class="table">
-            <thead>
-              <tr>
-                <th contenteditable="true">Posição</th>
-                <th>Gols</th>
-                <th>Artilheiro</th>
-                <th>Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><?= $artilheiros[0]->getGols() ?></td>
-                <td><?= $artilheiros[0]->getNome() ?></td>
-                <td><?= $arrayTimes[0]->getNomeTime()?></td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td><?= $artilheiros[1]->getGols() ?></td>
-                  <td><?= $artilheiros[1]->getNome() ?></td>
-                  <td><?= $arrayTimes[1]->getNomeTime()?></td>
-              </tr>
-              <tr>
-                  <td>3</td>
-                  <td><?= $artilheiros[2]->getGols() ?></td>
-                  <td><?= $artilheiros[2]->getNome() ?></td>
-                  <td><?= $arrayTimes[2]->getNomeTime()?></td>
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td><?= $artilheiros[3]->getGols() ?></td>
-                  <td><?= $artilheiros[3]->getNome() ?></td>
-                  <td><?= $arrayTimes[3]->getNomeTime()?></td>
-              </tr>
-              <tr>
-                  <td>5</td>
-                  <td><?= $artilheiros[4]->getGols() ?></td>
-                  <td><?= $artilheiros[4]->getNome() ?></td>
-                  <td><?= $arrayTimes[4]->getNomeTime()?></td>
-              </tr>
 
-            </tbody>
-          </table>
-        </div>
+          <div class="py-5">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <p class="lead">Classificação</p>
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                  <th>Posição</th>
+                                  <th>Time</th>
+                                  <th>Pontos</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>2</td>
+                                  <td><?= $timesP[1]->getNomeTime();?></td>
+                                  <td><?= $timesP[1]->getPontos();?></td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td><?= $timesP[2]->getNomeTime();?></td>
+                                  <td><?= $timesP[2]->getPontos();?></td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td><?= $timesP[3]->getNomeTime();?></td>
+                                  <td><?= $timesP[3]->getPontos();?></td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="col-md-4">
+                          <p class="lead">Artilheiros
+                              <br> </p>
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                  <th contenteditable="true">Posição</th>
+                                  <th>Gols</th>
+                                  <th>Artilheiro</th>
+                                  <th>Time</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <?php $a=array('1','2','3'); foreach ($a as $aa):?>
+                              <tr>
+                                  <td><?= $aa; ?></td>
+                                  <td><?= $artilheiros[$aa]->getGols() ?></td>
+                                  <td><?= $artilheiros[$aa]->getNome() ?></td>
+                                  <td><?= $arrayTimes[$aa]->getNomeTime()?></td>
+                              </tr>
+                              <?php endforeach;?>
+
+                          </table>
+                      </div>
+                      <div class="col-md-4">
+                          <p class="lead">Partidas</p>
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Time A</th>
+                                  <th>Time B</th>
+                                  <th>Resultado</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <?php foreach ($partidas as $p): ?>
+                              <tr>
+                                  <td><?= $p->getIdPartida(); ?></td>
+                                  <td><?php $t1 = $crudTime->getTime($p->getIdTimeMandante()); echo $t1->getNomeTime();?></td>
+                                  <td><?php $t1 = $crudTime->getTime($p->getIdTimeVisitante()); echo $t1->getNomeTime();?></td>
+                                  <td><?= $p->getResultadoTimeA()?> x <?= $p->getResultadoTimeB() ?></td>
+                              </tr>
+                              <?php endforeach;?>
+                              <tr>
+                                  <td>
+                                      <a href="#" class="btn btn-outline-primary">+</a>&nbsp;</td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <?php foreach ($times as $time): ?>
+                <div class="col-md-2">
+                    <img class="d-block mx-auto img-fluid rounded-circle" src="<?= $time->getLogo(); ?>">
+                    <a class="btn btn-primary btn-lg btn-circle" href="TimeController.php?rota=verTime&id=<?= $time->getIdTime()?>">+ </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+
   <div class="py-5 text-white bg-primary">
     <div class="container">
       <div class="row">

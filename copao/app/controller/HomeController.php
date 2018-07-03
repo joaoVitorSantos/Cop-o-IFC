@@ -2,6 +2,7 @@
 
 require_once __DIR__."/../crud/CRUDtime.php";
 require_once __DIR__."/../crud/CRUDjogador.php";
+require_once __DIR__."/../crud/CRUDpartida.php";
 
 session_start();
 
@@ -20,6 +21,14 @@ function index(){
         $time = $crudTime->getTime($artilheiro->getIdTime());
         $arrayTimes[] = $time;
     }
+
+    $partida = new CRUDpartida();
+    $partidas = $partida->getPartidas3();
+
+
+
+
+
 
     include_once "../views/index.php";
 }

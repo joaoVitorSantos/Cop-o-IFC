@@ -51,16 +51,6 @@
 
                     </tr>
                     <?php endforeach;?>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                    </tr>
                     </tbody>
                 </table>
             </div>

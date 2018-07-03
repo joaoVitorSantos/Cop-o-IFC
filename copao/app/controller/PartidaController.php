@@ -30,6 +30,22 @@ function attPartida($id){
 
 }
 
+function view($id_partida){
+
+    $c = new CRUDpartida();
+    $partida = $c->getPartida($id_partida);
+    $t = new CRUDtime();
+
+    $timeA = $partida->getIdTimeMandante();
+    $timeB = $partida->getIdTimeVisitante();
+
+    $t1 = $t->getTime($timeA);
+    $t2 = $t->getTime($timeB);
+
+    include_once "../views/partida.php";
+
+}
+
 
 
 
@@ -67,4 +83,12 @@ if ($_GET['acao'] == "add"){
 
 if ($_GET['acao'] == "att"){
     attPartida($_GET['id']);
+}
+
+if($_GET['acao'] == 'viewP'){
+
+    view($_GET['id']);
+
+
+
 }

@@ -61,4 +61,23 @@ class CRUDpartida
 
         return $listapartidas;
     }
+
+    public function getPartidas3(){
+        $sql = "SELECT * FROM partida order by(id_partida) desc limit 3";
+        $result = $this->conexao->query($sql);
+        $partidas = $result->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($partidas as $partida){
+            $idpar = $partida['id_partida'];
+            $idtimeman = $partida['id_time_mandante'];
+            $idtimevisi = $partida['id_time_visitante'];
+            $data = $partida['data'];
+            $obj = new Partida($idpar, $idtimeman, $idtimevisi, $data, $partida['resultadoTimeA'], $partida['resultadoTimeB'], $partida['vencedor']);
+            $listapartidas[] = $obj;
+        }
+
+        return $listapartidas;
+    }
+
+
+
 }
