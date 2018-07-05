@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jun-2018 às 02:01
+-- Generation Time: 05-Jul-2018 às 03:15
 -- Versão do servidor: 10.1.32-MariaDB
 -- PHP Version: 7.1.17
 
@@ -67,7 +67,7 @@ INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_am
 (3, '9', 'Vinicius', 0, 0, 0, 1),
 (4, '8', 'Bryan', 35, 0, 0, 1),
 (5, '19', 'Leonardo Edenir', 0, 0, 0, 1),
-(6, '88', 'Russo', 35, 0, 0, 1),
+(6, '88', 'Russo', 36, 0, 0, 1),
 (7, '99', 'Léo Vieira', 0, 0, 0, 1),
 (8, '21', 'Marlon', 0, 0, 0, 1),
 (9, '60', 'Christian', 0, 0, 0, 1),
@@ -134,16 +134,18 @@ CREATE TABLE `partida` (
   `id_time_mandante` int(4) DEFAULT NULL,
   `id_time_visitante` int(4) DEFAULT NULL,
   `data` varchar(15) NOT NULL,
-  `resultado` varchar(10) NOT NULL
+  `resultadoTimeA` int(2) NOT NULL,
+  `resultadoTimeB` int(2) NOT NULL,
+  `vencedor` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `partida`
 --
 
-INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultado`) VALUES
-(1, 1, 3, '01/07/18', '2 x 0'),
-(2, 2, 5, '01/07/18', '1 x 2');
+INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultadoTimeA`, `resultadoTimeB`, `vencedor`) VALUES
+(1, 1, 3, '01/07/18', 2, 0, 1),
+(2, 2, 5, '01/07/18', 1, 0, 2);
 
 -- --------------------------------------------------------
 

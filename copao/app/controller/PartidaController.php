@@ -19,6 +19,10 @@ function formAtt(Partida $partida){
 
 }
 
+function viewAdm(){
+
+}
+
 function attPartida($id){
 
     $p = new Partida($id, $_POST['timeA'], $_POST['timeB'], $_POST['data'], $_POST['gol1'], $_POST['gol2'], $_POST['vencedor']);
@@ -96,4 +100,7 @@ if($_GET['acao'] == 'viewP'){
 }
 if ($_GET['acao'] == 'viewPartidas'){
     views();
+}
+if ($_GET['acao'] == 'viewAdm'){
+    viewAdm();
 }

@@ -48,6 +48,9 @@ function indexLogado(){
         $arrayTimes[] = $time;
     }
 
+    $partida = new CRUDpartida();
+    $partidas = $partida->getPartidas3();
+
     $user = $_SESSION['nome'];
     $tipo = $_SESSION['tipo'];
 

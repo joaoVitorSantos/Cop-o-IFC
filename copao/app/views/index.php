@@ -41,7 +41,7 @@ elseif (isset($logado) and $logado['tipo'] == 2){
               <div class="container">
                   <div class="row">
                       <div class="col-md-4">
-                          <p class="lead">Classificação</p>
+                          <p class="lead">Classificação</a>
                           <table class="table">
                               <thead>
                               <tr>
@@ -101,7 +101,7 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                           </table>
                       </div>
                       <div class="col-md-4">
-                          <p class="lead">Partidas</p>
+                          <p class="lead">Partidas
                           <table class="table">
                               <thead>
                               <tr>
