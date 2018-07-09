@@ -12,6 +12,19 @@ class CRUDtime
         $this->conexao = DBConexao::getConexao();
     }
 
+    public function getTimesC(){
+        $sql = "SELECT * from time order by pontos desc ";
+        $res = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        $resultado = array();
+        foreach ($res as $r){
+            $t = new Time($r['id_time'], $r['logo'], $r['nome_time'], $r['pontos'], $r['cor']);
+            $resultado[] = $t;
+        }
+
+        return $resultado;
+    }
+
     public function getTimes(){
         $sql = "SELECT * from time";
         $res = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);

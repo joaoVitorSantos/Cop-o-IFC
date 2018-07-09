@@ -19,7 +19,7 @@ function timeU($id){
 
 function view(){
     $c = new CRUDtime();
-    $times = $c->getTimes();
+    $times = $c->getTimesC();
     include_once "../views/times.php";
 }
 

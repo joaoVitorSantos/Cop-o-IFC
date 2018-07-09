@@ -53,18 +53,18 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               <tbody>
                               <tr>
                                   <td>1</td>
+                                  <td><?= $timesP[0]->getNomeTime();?></td>
+                                  <td><?= $timesP[0]->getPontos();?></td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
                                   <td><?= $timesP[1]->getNomeTime();?></td>
                                   <td><?= $timesP[1]->getPontos();?></td>
                               </tr>
                               <tr>
-                                  <td>2</td>
+                                  <td>3</td>
                                   <td><?= $timesP[2]->getNomeTime();?></td>
                                   <td><?= $timesP[2]->getPontos();?></td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td><?= $timesP[3]->getNomeTime();?></td>
-                                  <td><?= $timesP[3]->getPontos();?></td>
                               </tr>
                               <tr>
                                   <td>
@@ -105,7 +105,7 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                           <table class="table">
                               <thead>
                               <tr>
-                                  <th>#</th>
+                                  <th>Data</th>
                                   <th>Time A</th>
                                   <th>Resultado</th>
                                   <th>Time B</th>
@@ -115,7 +115,7 @@ elseif (isset($logado) and $logado['tipo'] == 2){
                               <tbody>
                               <?php foreach ($partidas as $p): ?>
                               <tr>
-                                  <td><?= $p->getIdPartida(); ?></td>
+                                  <td><?= $p->getData(); ?></td>
                                   <td><?php $t1 = $crudTime->getTime($p->getIdTimeMandante()); echo $t1->getNomeTime();?></td>
                                   <td><?= $p->getResultadoTimeA()?> x <?= $p->getResultadoTimeB()?></td>
                                   <td><?php $t1 = $crudTime->getTime($p->getIdTimeVisitante()); echo $t1->getNomeTime();?></td>

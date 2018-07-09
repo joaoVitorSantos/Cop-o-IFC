@@ -10,7 +10,7 @@ session_start();
 function index(){
 
     $crudTime = new CRUDtime();
-    $times = $crudTime->getTimes();
+    $times = $crudTime->getTimesC();
     $timesP = $crudTime->getTimesPontos();
     $crudJogadores = new CRUDjogador();
 
@@ -36,7 +36,7 @@ function index(){
 function indexLogado(){
 
     $crudTime = new CRUDtime();
-    $times = $crudTime->getTimes();
+    $times = $crudTime->getTimesC();
     $timesP = $crudTime->getTimesPontos();
     $crudJogadores = new CRUDjogador();
 
