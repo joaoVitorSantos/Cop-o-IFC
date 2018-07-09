@@ -32,10 +32,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <a class="btn btn-primary btn-block btn-lg mx-auto w-50" href="PartidaController.php">Partidas</a>
+                <a class="btn btn-primary btn-block btn-lg mx-auto w-50" href="PartidaController.php?acao=viewAdm">Partidas</a>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-primary btn-block btn-lg mx-auto w-50" href="#">Times</a>
+                <a class="btn btn-primary btn-block btn-lg mx-auto w-50" href="TimeController.php?rota=verA">Times</a>
             </div>
             <div class="col-md-4">
                 <a class="btn btn-primary btn-block btn-lg mx-auto w-50" href="JogadorController.php">Jogadores</a>

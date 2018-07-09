@@ -20,7 +20,10 @@ function formAtt(Partida $partida){
 }
 
 function viewAdm(){
-
+    $t = new CRUDtime();
+    $c = new CRUDpartida();
+    $partidas = $c->getPartidas();
+    include_once "../views/partidAdm.php";
 }
 
 function attPartida($id){
@@ -76,13 +79,20 @@ function addPartida(){
 
 }
 
+function del($id){
+    $p = new CRUDpartida();
+    $p->deletePartida($id);
+
+    header('location: ../../index.php');
+}
+
 if ($_GET['acao'] == "addForm"){
     form();
 }
 
 if ($_GET['acao'] == "attForm"){
     $part = new CRUDpartida();
-    $partida = $part->getPartida(3);
+    $partida = $part->getPartida($_GET['id']);
 
     formAtt($partida);
 }
@@ -103,4 +113,8 @@ if ($_GET['acao'] == 'viewPartidas'){
 }
 if ($_GET['acao'] == 'viewAdm'){
     viewAdm();
+}
+
+if ($_GET['acao'] == 'delete'){
+    del($_GET['id']);
 }

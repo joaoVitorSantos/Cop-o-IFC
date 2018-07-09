@@ -23,6 +23,19 @@ function view(){
     include_once "../views/times.php";
 }
 
+function viewA(){
+    $c = new CRUDtime();
+    $times = $c->getTimes();
+    include_once "../views/timesAdm.php";
+}
+
+function del($id){
+    $c = new CRUDtime();
+    $c->deleteTime($id);
+
+    header('location:../../index.php');
+}
+
 if ($_GET["rota"] == "verTime"){
     $crudTime = new CRUDtime();
     $time = $crudTime->getTime($_GET["id"]);
@@ -32,7 +45,7 @@ if ($_GET["rota"] == "verTime"){
 }
 
 if ($_GET['rota'] == "timesUpdate"){
-    timeUpd(1);
+    timeUpd($_GET['id']);
 }
 
 if ($_GET['rota'] == "updateTime") {
@@ -41,4 +54,12 @@ timeU($_GET['id']);
 
 if($_GET['rota'] == 'ver'){
     view();
+}
+
+if($_GET['rota'] == 'verA'){
+    viewA();
+}
+
+if ($_GET['rota'] == 'delete'){
+    del($_GET['id']);
 }

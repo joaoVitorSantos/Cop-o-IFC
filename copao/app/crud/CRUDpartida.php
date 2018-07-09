@@ -22,7 +22,7 @@ class CRUDpartida
     }
 
     //DELETE
-    public function deletePartida(Partida $excluir){
+    public function deletePartida($excluir){
         $sql = "DELETE FROM partida WHERE id_partida=".$excluir;
 
         $this->conexao->exec($sql);

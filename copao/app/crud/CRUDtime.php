@@ -91,8 +91,9 @@ class CRUDtime
     }
 
     public function deleteTime($id){
-        $sql = "DELETE FROM time WHERE id_time = '{$id}'";
-        $this->conexao->exec($id);
+        $sql = "DELETE FROM `time` WHERE id_time =  '{$id}'";
+        $this->conexao->exec($sql);
+
     }
 
     public function updateTime(Time $a){
@@ -103,9 +104,6 @@ class CRUDtime
     }
 
 }
-//$c = new CRUDtime();
-//$res = $c->getJogadores(1);
-//print_r($res);
-//$a = $c->getTimesPontos();
-//print_r($a);
+
+
 
