@@ -8,20 +8,33 @@
     <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-primary navbar-dark">
-    <div class="container">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-            <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Olá&nbsp;<?= $user ?></a>
-            <a href="UsuarioController.php?rota=admin" class="btn navbar-btn ml-2 text-white btn-secondary">
-                <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Admin</a>
-            <a href="UsuarioController.php?rota=logout" class="btn navbar-btn ml-2 text-white btn-danger">&nbsp;Sair</a>
-        </div>
+<?php if (!isset($_SESSION) or !isset($_SESSION['tipo'])){
+    echo "<nav class=\"navbar navbar-expand-md bg-primary navbar-dark\">
+    <div class=\"container\">
+      <a class=\"navbar-brand\" href=\"../../index.php\">Copão IF</a>
+      <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar2SupportedContent\">
+        <span class=\"navbar-toggler-icon\"></span>
+      </button>
+      <div class=\"collapse navbar-collapse text-center justify-content-end\" id=\"navbar2SupportedContent\">
+        <a href=\"../controller/UsuarioController.php?rota=loginForm\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Login</a>
+        <a href=\"UsuarioController.php?rota=formCadastro\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Cadastrar</a>
+      </div>
     </div>
-</nav>
+  </nav>";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] != 2){
+    include_once "navLogged.php";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
+
+    include_once "navAdmin.php";
+}
+
+?>
 <div class="py-5">
     <div class="container">
         <div class="row">
@@ -60,36 +73,12 @@
     </div>
 </div>
 
+
 <div class="py-5 text-white bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <p class="lead">Sign up to our newsletter for the latest news</p>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your e-mail here"> </div>
-                    <button type="submit" class="btn btn-primary ml-3">Subscribe</button>
-                </form>
-            </div>
-            <div class="col-4 col-md-1 align-self-center">
-                <a href="https://www.facebook.com" target="_blank">
-                    <i class="fa fa-fw fa-facebook fa-3x text-white"></i>
-                </a>
-            </div>
-            <div class="col-4 col-md-1 align-self-center">
-                <a href="https://twitter.com" target="_blank">
-                    <i class="fa fa-fw fa-twitter fa-3x text-white"></i>
-                </a>
-            </div>
-            <div class="col-4 col-md-1 align-self-center">
-                <a href="https://www.instagram.com" target="_blank">
-                    <i class="fa fa-fw fa-instagram text-white fa-3x"></i>
-                </a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 mt-3 text-center">
-                <p>© Copyright 2017 Pingendo - All rights reserved.</p>
+                <p>© Copyright 2018 Copão IFC - Todos os direitos Reservados.</p>
             </div>
         </div>
     </div>

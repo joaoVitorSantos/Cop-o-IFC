@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__."/../crud/CRUDtime.php";
-require_once __DIR__."/../crud/CRUDpartida.php";
+require_once "../crud/CRUDtime.php";
+require_once "../crud/CRUDpartida.php";
 
 function timeUpd($id){
 
@@ -41,11 +41,10 @@ if ($_GET["rota"] == "verTime"){
     $crudTime = new CRUDtime();
     $time = $crudTime->getTime($_GET["id"]);
     $jogadores = $crudTime->getJogadores($_GET["id"]);
-//    $c = new CRUDtime();
-    $partidas = $crudTime->getPartidasTimee($_GET["id"]);
-    echo $partidas;
+    $partidas = $crudTime->getPartidasTime($_GET["id"]);
 
-    require_once __DIR__."../views/time.php";
+
+    require_once "../views/time.php";
 }
 
 if ($_GET['rota'] == "timesUpdate"){

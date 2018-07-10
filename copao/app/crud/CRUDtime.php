@@ -51,6 +51,20 @@ class CRUDtime
         return $resultado;
     }
 
+    public function getPartidasTime($id){
+        $sql = "SELECT * FROM partida WHERE partida.id_time_mandante = '{$id}' OR partida.id_time_visitante = '{$id}' ORDER BY id_partida DESC ";
+        $partida = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        $partidas = array();
+        foreach ($partida as $p){
+            $pa = new Partida($p['id_partida'], $p['id_time_mandante'], $p['id_time_visitante'], $p['data'], $p['resultadoTimeA'], $p['resultadoTimeB'], $p['vencedor']);
+            $partidas[] = $pa;
+        }
+
+        return $partidas;
+
+    }
+
     
     public function getTime($id){
         $sql = "SELECT * FROM time WHERE id_time = '{$id}'";

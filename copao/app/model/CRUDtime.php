@@ -49,7 +49,7 @@ class CRUDtime
         return $resultado;
     }
 
-    public function getPartidasTimee($id){
+    public function getPartidasTime($id){
         $sql = "SELECT * FROM partida, time WHERE partida.id_time_mandante = time.id_time OR partida.id_time_visitante = time.id_time AND time.id_time = '{$id}' ORDER BY id_partida DESC ";
         $partida = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -116,7 +116,7 @@ class CRUDtime
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
         }
     }
-    
+
 
 
 

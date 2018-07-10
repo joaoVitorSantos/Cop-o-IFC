@@ -27,5 +27,15 @@
         </div>
     </div>
 </div>
+
+<div class="py-5 text-white bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3 text-center">
+                <p>© Copyright 2018 Copão IFC - Todos os direitos Reservados.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
