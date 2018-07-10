@@ -7,7 +7,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../assets/css/time.css" type="text/css"> </head>
+    <link rel="stylesheet" href="../assets/css/time.css" type="text/css">
+
+
+    <style>
+        h1{
+            text-align: center;
+
+        }
+
+    </style>
+</head>
 
 <body>
 <?php if (!isset($_SESSION) or !isset($_SESSION['tipo'])){
@@ -53,6 +63,7 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
+                    <h1>PARTIDAS</h1>
                     <thead>
                     <tr>
                         <th>Data</th>
@@ -65,11 +76,12 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                     <?php foreach ($partidas as $partida): ?>
                     <tr>
                         <td><?= $partida->getData() ?></td>
-                        <td>Mark
+                            <td><?php $time = $crudTime->getTime($partida->getIdTimeMandante()); echo $time->getNomeTime() ?>
                             <img class="img-fluid d-block rounded-circle float-left" src="<?php $time = $crudTime->getTime($partida->getIdTimeMandante()); echo $time->getLogo()?>" width="40 40px">
                         </td>
+
                         <td class="text-center"><?= $partida->getResultadoTimeA() ?> x <?= $partida->getResultadoTimeB() ?></td>
-                        <td class="text-right">Cell
+                        <td class="text-right"><?php $time2 = $crudTime->getTime($partida->getIdTimeVisitante()); echo $time2->getNomeTime()?>
                             <img class="img-fluid d-block rounded-circle float-right" src="<?php $time2 = $crudTime->getTime($partida->getIdTimeVisitante()); echo $time2->getLogo()?>" width="40 40px">
                         </td>
                     </tr>

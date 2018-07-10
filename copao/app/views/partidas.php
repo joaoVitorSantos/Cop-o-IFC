@@ -54,9 +54,9 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                     <?php  foreach ($partidas as $p): $t1 = $t->getTime($p->getIdTimeMandante()); $t2 =  $t->getTime($p->getIdTimeVisitante());?>
                     <tr>
                         <td><?= $p->getData() ?></td>
-                        <td class="text-left">
+                        <a href="?acao=verTime"><td class="text-left">
                             <img class="d-block rounded-circle float-left" src="<?= $t1->getLogo() ?>" width="40px" height="40px"><?= $t1->getNomeTime() ?>&nbsp</td>
-                        <td ><?= $p->getResultadoTimeA() ?>x<?= $p->getResultadoTimeB() ?></td>
+                        <td ></a><?= $p->getResultadoTimeA() ?>x<?= $p->getResultadoTimeB() ?></td>
                         <td class="text-right"><?= $t2->getNomeTime() ?> &nbsp;
                             <img class="d-block rounded-circle float-right" src="<?= $t2->getLogo() ?>" width="40px" height="40px">
                         </td>

@@ -53,6 +53,7 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                     </tr>
                     </thead>
                     <tbody>
+                    <tr><a href="JogadorController.php?acao=cadjog"><button class="btn btn-secondary">Adicionar Jogador</button></a></tr>
                     <?php foreach ($jogadores as $jogador): ?>
                     <tr>
 

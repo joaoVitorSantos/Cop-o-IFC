@@ -86,6 +86,7 @@ function del($id){
     header('location: ../../index.php');
 }
 
+
 if ($_GET['acao'] == "addForm"){
     form();
 }
@@ -117,4 +118,7 @@ if ($_GET['acao'] == 'viewAdm'){
 
 if ($_GET['acao'] == 'delete'){
     del($_GET['id']);
+}
+if ($_GET['acao'] == 'verTime'){
+
 }

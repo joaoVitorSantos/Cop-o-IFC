@@ -37,6 +37,10 @@ function del($id){
     header('location:../../index.php');
 }
 
+function form(){
+
+}
+
 if ($_GET["rota"] == "verTime"){
     $crudTime = new CRUDtime();
     $time = $crudTime->getTime($_GET["id"]);
