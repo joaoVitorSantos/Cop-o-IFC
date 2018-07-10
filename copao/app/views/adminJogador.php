@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 
@@ -8,22 +9,33 @@
     <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-primary navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Copão IF
-            <br> </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-            <a href="JogadorController.php?acao=cadjog" class="btn navbar-btn ml-2 text-white btn-secondary">Sign Up Player</a>
-        </div>
-<!--        <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">-->
-<!--            <input type="search" name="jogsearch" class="" placeholder="Search player">-->
-<!--        </div>-->
-
+<?php if (!isset($_SESSION) or !isset($_SESSION['tipo'])){
+    echo "<nav class=\"navbar navbar-expand-md bg-primary navbar-dark\">
+    <div class=\"container\">
+      <a class=\"navbar-brand\" href=\"../../index.php\">Copão IF</a>
+      <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar2SupportedContent\">
+        <span class=\"navbar-toggler-icon\"></span>
+      </button>
+      <div class=\"collapse navbar-collapse text-center justify-content-end\" id=\"navbar2SupportedContent\">
+        <a href=\"../controller/UsuarioController.php?rota=loginForm\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Login</a>
+        <a href=\"UsuarioController.php?rota=formCadastro\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Cadastrar</a>
+      </div>
     </div>
-</nav>
+  </nav>";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] != 2){
+    include_once "navLogged.php";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
+
+    include_once "navAdmin.php";
+}
+
+?>
 
 <table class="table table-bordered">
     <thead>

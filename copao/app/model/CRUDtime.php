@@ -3,6 +3,7 @@
 require_once "../model/DBConexao.php";
 require_once "../model/Time.php";
 require_once "../model/Jogador.php";
+require_once "../model/Partida.php";
 
 class CRUDtime
 {
@@ -46,6 +47,20 @@ class CRUDtime
         $resultado = new Time($res['id_time'], $res['logo'], $res['nome_time'], $res['pontos'], $res['cor']);
 
         return $resultado;
+    }
+
+    public function getPartidasTimee($id){
+        $sql = "SELECT * FROM partida, time WHERE partida.id_time_mandante = time.id_time OR partida.id_time_visitante = time.id_time AND time.id_time = '{$id}' ORDER BY id_partida DESC ";
+        $partida = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        $partidas = array();
+        foreach ($partida as $p){
+            $pa = new Partida($p['id_partida'], $p['id_time_mandante'], $p['id_time_visitante'], $p['data'], $p['resultadoTimeA'], $p['resultadoTimeB'], $p['vencedor']);
+            $partidas[] = $pa;
+        }
+
+        return $partidas;
+
     }
 
 
@@ -101,11 +116,14 @@ class CRUDtime
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
         }
     }
+    
+
+
 
 }
 //$c = new CRUDtime();
-//$res = $c->getJogadores(1);
+//$res = $c->getPartidasTime(1);
 //print_r($res);
-//$a = $c->getTimesPontos();
-//print_r($a);
+//die;
+
 

@@ -21,6 +21,21 @@ class CRUDpartida
 
     }
 
+    public function getPartidasTime($id){
+        $sql = "SELECT * FROM partida, time WHERE partida.id_time_mandante = time.id_time OR partida.id_time_visitante = time.id_time AND time.id_time = '{$id}' ORDER BY id_partida DESC ";
+        $partida = $this->conexao->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        $partidas = array();
+        foreach ($partida as $p){
+            $pa = new Partida($p['id_partida'], $p['id_time_mandante'], $p['id_time_visitante'], $p['data'], $p['resultadoTimeA'], $p['resultadoTimeB'], $p['vencedor']);
+            $partidas[] = $pa;
+        }
+
+        return $partidas;
+
+    }
+
+
     //DELETE
     public function deletePartida(Partida $excluir){
         $sql = "DELETE FROM partida WHERE id_partida=".$excluir;

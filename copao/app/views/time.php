@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,20 +10,34 @@
     <link rel="stylesheet" href="../assets/css/time.css" type="text/css"> </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-primary navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Copão IF</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-            <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Login</a>
-            <a class="btn navbar-btn ml-2 text-white btn-secondary">
-                <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Cadastrar</a>
-        </div>
+<?php if (!isset($_SESSION) or !isset($_SESSION['tipo'])){
+    echo "<nav class=\"navbar navbar-expand-md bg-primary navbar-dark\">
+    <div class=\"container\">
+      <a class=\"navbar-brand\" href=\"../../index.php\">Copão IF</a>
+      <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar2SupportedContent\">
+        <span class=\"navbar-toggler-icon\"></span>
+      </button>
+      <div class=\"collapse navbar-collapse text-center justify-content-end\" id=\"navbar2SupportedContent\">
+        <a href=\"../controller/UsuarioController.php?rota=loginForm\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Login</a>
+        <a href=\"UsuarioController.php?rota=formCadastro\" class=\"btn navbar-btn ml-2 text-white btn-secondary\">
+          <i class=\"fa d-inline fa-lg fa-user-circle-o\"></i>&nbsp;Cadastrar</a>
+      </div>
     </div>
-</nav>
+  </nav>";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] != 2){
+    include_once "navLogged.php";
+}
+
+elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
+
+    include_once "navAdmin.php";
+}
+
+?>
+
 <div class="py-5">
     <div class="container">
         <div class="row">
@@ -39,19 +55,85 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Número</th>
-                        <th>Nome</th>
-                        <th>Gols</th>
+                        <th>Data</th>
+                        <th>Time A</th>
+                        <th class="text-center">Resultado</th>
+                        <th class="text-right">Time B</th>
                     </tr>
                     </thead>
-                    <?php
-                    ?>
                     <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Mark</td>
-                        <td>8</td>
+                        <td>Mark
+                            <img class="img-fluid d-block rounded-circle float-left" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
+                        <td class="text-center">8</td>
+                        <td class="text-right">Cell
+                            <img class="img-fluid d-block rounded-circle float-right" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
                     </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob
+                            <img class="img-fluid d-block rounded-circle float-left" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
+                        <td class="text-center">15</td>
+                        <td class="text-right">Cell
+                            <img class="img-fluid d-block rounded-circle float-right" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Larry
+                            <img class="img-fluid d-block rounded-circle float-left" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
+                        <td class="text-center">0</td>
+                        <td class="text-right">Cell
+                            <img class="img-fluid d-block rounded-circle float-right" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="30
+
+40px">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Camisa</th>
+                        <th>Nome</th>
+                        <th>Gols</th>
+                        <th>Cartões Amarelos</th>
+                        <th>Cartões Vermelhos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($jogadores as $jogador):?>
+                    <tr>
+                        <td><?= $jogador->getNumeroCamisa() ?></td>
+                        <td><?= $jogador->getNome() ?></td>
+                        <td><?= $jogador->getGols() ?></td>
+                        <td><?= $jogador->getCartaoAmarelo() ?></td>
+                        <td><?= $jogador->getCartaoVermelho() ?></td>
+                    </tr>
+                    <?php endforeach;?>
                     </tbody>
                 </table>
             </div>
