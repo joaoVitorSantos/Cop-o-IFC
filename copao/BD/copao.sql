@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 05-Jul-2018 às 03:15
--- Versão do servidor: 10.1.32-MariaDB
--- PHP Version: 7.1.17
+-- Host: localhost
+-- Generation Time: 12-Jul-2018 às 16:55
+-- Versão do servidor: 5.7.21-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,25 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `copao`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `curtir`
---
-
-CREATE TABLE `curtir` (
-  `id_time` int(4) DEFAULT NULL,
-  `id_usuario` int(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `curtir`
---
-
-INSERT INTO `curtir` (`id_time`, `id_usuario`) VALUES
-(3, 1),
-(1, 1);
 
 -- --------------------------------------------------------
 
@@ -65,17 +44,17 @@ INSERT INTO `jogador` (`id_jogador`, `numero_camisa`, `nome`, `gols`, `cartao_am
 (1, '7', 'João Vitor', 0, 0, 0, 1),
 (2, '18', 'Asaph', 0, 0, 0, 1),
 (3, '9', 'Vinicius', 0, 0, 0, 1),
-(4, '8', 'Bryan', 35, 0, 0, 1),
+(4, '8', 'Bryan', 0, 0, 0, 1),
 (5, '19', 'Leonardo Edenir', 0, 0, 0, 1),
-(6, '88', 'Russo', 36, 0, 0, 1),
+(6, '88', 'Russo', 0, 0, 0, 1),
 (7, '99', 'Léo Vieira', 0, 0, 0, 1),
 (8, '21', 'Marlon', 0, 0, 0, 1),
 (9, '60', 'Christian', 0, 0, 0, 1),
-(10, '10', 'André', 7, 0, 0, 1),
+(10, '10', 'André', 0, 0, 0, 1),
 (11, '6', 'Leandro', 0, 0, 0, 3),
 (12, '16', 'Henrique', 0, 0, 0, 3),
 (13, '27', 'Lucas', 0, 0, 0, 3),
-(14, '3', 'Welliton', 3, 0, 0, 3),
+(14, '3', 'Welliton', 0, 0, 0, 3),
 (15, '8', 'Ruan', 0, 0, 0, 3),
 (16, '5', 'Luciano', 0, 0, 0, 3),
 (17, '21', 'Oberdan', 0, 0, 0, 3),
@@ -134,9 +113,9 @@ CREATE TABLE `partida` (
   `id_time_mandante` int(4) DEFAULT NULL,
   `id_time_visitante` int(4) DEFAULT NULL,
   `data` varchar(15) NOT NULL,
-  `resultadoTimeA` int(2) NOT NULL,
-  `resultadoTimeB` int(2) NOT NULL,
-  `vencedor` int(2) NOT NULL
+  `resultadoTimeA` int(2) DEFAULT NULL,
+  `resultadoTimeB` int(2) DEFAULT NULL,
+  `vencedor` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -144,8 +123,12 @@ CREATE TABLE `partida` (
 --
 
 INSERT INTO `partida` (`id_partida`, `id_time_mandante`, `id_time_visitante`, `data`, `resultadoTimeA`, `resultadoTimeB`, `vencedor`) VALUES
-(1, 1, 3, '01/07/18', 2, 0, 1),
-(2, 2, 5, '01/07/18', 1, 0, 2);
+(3, 2, 3, '02 de agosto', NULL, NULL, NULL),
+(4, 6, 4, '02 de agosto', NULL, NULL, NULL),
+(5, 1, 5, '02 de agosto', NULL, NULL, NULL),
+(6, 4, 7, '09 de agosto', NULL, NULL, NULL),
+(7, 3, 1, '09 de agosto', NULL, NULL, NULL),
+(8, 5, 6, '09 de agosto', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,13 +149,13 @@ CREATE TABLE `time` (
 --
 
 INSERT INTO `time` (`id_time`, `logo`, `nome_time`, `pontos`, `cor`) VALUES
-(1, '../assets/imagens/logos/laranja.png', 'Tigers Outbreak', 30, 'Laranja'),
-(2, '../assets/imagens/logos/azul.png', 'Abiduzidos', 20, 'Azul'),
-(3, '../assets/imagens/logos/amarelo.png', 'Solares', 23, 'Amarelo'),
-(4, '../assets/imagens/logos/roxo.png', 'Vigaristas', 16, 'Roxo'),
-(5, '../assets/imagens/logos/vermelho.png', 'Socanelas', 12, 'Vermelho'),
-(6, '../assets/imagens/logos/preto.png', 'Maori', 28, 'Preto'),
-(7, '../assets/imagens/logos/servidores.png', 'Servidores', 10, 'Branco');
+(1, '../assets/imagens/logos/laranja.png', 'Tigers Outbreak', 0, 'Laranja'),
+(2, '../assets/imagens/logos/azul.png', 'Abiduzidos', 0, 'Azul'),
+(3, '../assets/imagens/logos/amarelo.png', 'Solares', 0, 'Amarelo'),
+(4, '../assets/imagens/logos/roxo.png', 'Vigaristas', 0, 'Roxo'),
+(5, '../assets/imagens/logos/vermelho.png', 'Socanelas', 0, 'Vermelho'),
+(6, '../assets/imagens/logos/preto.png', 'Maori', 0, 'Preto'),
+(7, '../assets/imagens/logos/servidores.png', 'Servidores', 0, 'Branco');
 
 -- --------------------------------------------------------
 
@@ -212,19 +195,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `id_tipo_usuario`, `email`, `senha`) VALUES
-(1, 'admin', 2, 'copaoifc@gmail.com', 'copao'),
-(5, 'Russo', 2, 'email@email', '$2y$10$e7kGPm19zD7gXSdvn62DweiY4NXPEU7k2f3UfrLP1wfGh28t4/IyG');
+(6, 'CopãoAdm', 2, 'copaoif@gmail.com', '$2y$10$gfd4tJAp8LjMGkJ5PVdtjubP2CSWlYsCPikiM.Adx178PZpuzsrJC');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `curtir`
---
-ALTER TABLE `curtir`
-  ADD KEY `id_time` (`id_time`),
-  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indexes for table `jogador`
@@ -269,41 +244,29 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `jogador`
   MODIFY `id_jogador` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
 --
 -- AUTO_INCREMENT for table `partida`
 --
 ALTER TABLE `partida`
-  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_partida` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `time`
 --
 ALTER TABLE `time`
   MODIFY `id_time` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
   MODIFY `id_tipo_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
-
---
--- Limitadores para a tabela `curtir`
---
-ALTER TABLE `curtir`
-  ADD CONSTRAINT `curtir_ibfk_1` FOREIGN KEY (`id_time`) REFERENCES `time` (`id_time`),
-  ADD CONSTRAINT `curtir_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Limitadores para a tabela `jogador`
@@ -323,7 +286,6 @@ ALTER TABLE `partida`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

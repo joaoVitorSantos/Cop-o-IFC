@@ -65,7 +65,13 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                   <input type="number" class="form-control" name="cartao_vermelho" placeholder="Number of red cards" value="<?= $jogador->getCartaoVermelho()?>"> </div>
                 <div class="form-group">
                   <label>Id Time</label>
-                  <input type="number" class="form-control" name="id_time" placeholder="ID of team" value="<?= $jogador->getIdTime()?>"> </div>
+
+                    <select name="id_time" class="custom-control custom-select" draggable="true">
+                        <?php foreach ($times as $time):?>
+                            <option value="<?= $time->getIdTime()?>"><?= $time->getNomeTime()?></option>
+                        <?php endforeach;?>
+                    </select>
+                   </div>
                 <button type="submit" class="btn btn-secondary">Enviar</button>
               </form>
             </div>

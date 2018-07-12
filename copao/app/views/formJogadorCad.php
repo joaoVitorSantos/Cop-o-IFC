@@ -72,6 +72,11 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
         </div>
     </div>
 </div>
+</div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div></div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div>
 
 <div class="form-group">
     <label for="exampleInputEmail1"></label>

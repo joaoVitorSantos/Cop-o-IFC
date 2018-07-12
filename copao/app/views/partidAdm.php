@@ -74,6 +74,16 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
     </div>
 </div>
 
+</div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div></div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div>
+</div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div></div><div class="form-group">
+    <label for="exampleInputEmail1"></label>
+</div>
 
 <div class="py-5 text-white bg-primary">
     <div class="container">

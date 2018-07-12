@@ -3,10 +3,24 @@
 <html>
 
 <head>
+    <title>Cadastre-se</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css"> </head>
+    <link rel="stylesheet" href="https://v40.pingendo.com/assets/4.0.0/default/theme.css" type="text/css">
+    <script>
+        function validarSenha(form){
+            senha = document.formulario.senha.value;
+            senhaRepetida = document.formulario.repetir_senha.value;
+            if (senha != senhaRepetida){
+                alert("Repita a senha corretamente");
+                document.formulario.repetir_senha.focus();
+                return false;
+            }
+        }
+    </script>
+
+</head>
 
 <body>
 <?php if (!isset($_SESSION) or !isset($_SESSION['tipo'])){
@@ -45,7 +59,7 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                 <div class="card text-white p-5 bg-primary">
                     <div class="card-body">
                         <h1 class="mb-4">Cadastre-se</h1>
-                        <form method="post" action="UsuarioController.php?rota=confirmaCadastro">
+                        <form method="post" onsubmit="return validarSenha(this);" name="formulario" action="UsuarioController.php?rota=confirmaCadastro">
                             <div class="form-group">
                                 <label>Email</label>
                                 <input name="email" type="email" class="form-control" placeholder="Enter email"> </div>
@@ -59,7 +73,7 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
                                 <input name="senha" type="password" class="form-control" placeholder="Senha"> </div>
                             <div class="form-group">
                                 <label>Corfirmar Senha</label>
-                                <input type="password" class="form-control" placeholder="Senha"> </div>
+                                <input type="password" name="repetir_senha" class="form-control" placeholder="Senha"> </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1"></label>
                             </div>

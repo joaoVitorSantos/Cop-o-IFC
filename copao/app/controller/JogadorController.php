@@ -52,7 +52,9 @@ switch ($acao){
     break;
 
     case 'editar':
+        $t = new CRUDtime();
         $id = $_GET['id'];
+        $times = $t->getTimes();
         $crud = new CRUDjogador();
         $jogador = $crud->getJogador($id);
         include_once "../views/formJogadorUpd.php";

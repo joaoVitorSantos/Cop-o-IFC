@@ -4,6 +4,7 @@
 <html>
 
 <head>
+    <title><?= $time->getNomeTime() ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
@@ -97,6 +98,7 @@ elseif (isset($_SESSION) and $_SESSION['tipo'] == 2){
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
+                    <h1>JOGADORES</h1>
                     <thead>
                     <tr>
                         <th>Camisa</th>
